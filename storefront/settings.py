@@ -15,31 +15,34 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-58$083a+x5mik36t1!hiyuxibeen=l+)5)(3a&=+safvpl)25^'
-
+ 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#when live turn this to false
 
 ALLOWED_HOSTS = []
 
 
 # Application definition
-
+#CORNERSTONE - components, not apps exactly
 INSTALLED_APPS = [
     'django.contrib.admin', #admin interface for managing data
     'django.contrib.auth', #authenticating users
     'django.contrib.contenttypes',
     'django.contrib.messages', #display one time notifs to user
     'django.contrib.staticfiles', #serve static files, images cssfiles etc
+    'django.contrib.sessions',
+    #own
     'playground',
+    #third party
     'debug_toolbar'
 ]
- 
+# your requests and how requests are handled
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware', #added for debugger
     'django.middleware.security.SecurityMiddleware',
@@ -51,9 +54,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
-
+#how django knows how to route requests to the right view
 ROOT_URLCONF = 'storefront.urls'
 
+#where the views are located - the html page that gets redered in django
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -69,6 +73,7 @@ TEMPLATES = [
     },
 ]
 
+#how your server works, uses this setting to know how to handle requests
 WSGI_APPLICATION = 'storefront.wsgi.application'
 
 
