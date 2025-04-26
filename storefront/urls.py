@@ -28,6 +28,5 @@ urlpatterns = [
     path('contact/', contact_view),
     path('__debug__/', include(debug_toolbar.urls)) #add this line to the urls.py file to include the debug toolbar urls
     #send all urls that start with playground to the urls.py file in the playground app
-
 ]
 
