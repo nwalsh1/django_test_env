@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     #own
     'playground',
+    'pages',
     #third party
     'debug_toolbar'
 ]
