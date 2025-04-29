@@ -18,14 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 import debug_toolbar
 
-from pages.views import home_view, contact_view
+from pages.views import home_view, contact_view, about_view
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name='home'),
+    path('about/', about_view, name='about'),
+    path('contact/', contact_view, name='contact'),
     path('playground/', include('playground.urls')), 
-    path('contact/', contact_view),
     path('__debug__/', include(debug_toolbar.urls)) #add this line to the urls.py file to include the debug toolbar urls
     #send all urls that start with playground to the urls.py file in the playground app
 ]
