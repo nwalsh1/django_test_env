@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import Http404
+from django.shortcuts import render, get_object_or_404
 
 from .models import Product #import model
 from .forms import ProductForm, RawProductForm #import form``
@@ -31,7 +32,11 @@ def product_detail_view(request):
 #     return render(request, "products/product_create.html", context)
 
 def product_create_view(request):
-    form = ProductForm(request.POST or None) #create a form instance with the data from the request
+    initial_data = {
+        'title' : 'My this awesome title'
+    }
+    obj = Product.objects.get(id=1)
+    form = ProductForm(request.POST or None, instance=obj) #create a form instance with the data from the request
     if form.is_valid(): #check if the form is valid
         form.save() #save the form to the database
         form = ProductForm() #reset the form to an empty form
@@ -40,3 +45,15 @@ def product_create_view(request):
         'form': form #pass the object to the template
     }
     return render(request, "products/product_create.html", context)
+
+def dynamic_lookup_view(request,my_id): 
+    #obj = Product.objects.get(id=my_id)
+    #obj = get_object_or_404(Product, id=my_id)
+    try:
+        obj = Product.objects.get(id=my_id)
+    except Product.DoesNotExist:
+        raise Http404
+    context = {
+        "object" : obj
+    }
+    return render(request, "products/product_detail.html",context)

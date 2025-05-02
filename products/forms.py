@@ -25,7 +25,8 @@ class ProductForm(forms.ModelForm):
             'description',
             'price'
         ]
-
+        
+    #example validation
     def clean_title(self, *args, **kwargs):
         title = self.cleaned_data.get("title")
         if not "Guidos" in title:

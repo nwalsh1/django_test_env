@@ -19,7 +19,11 @@ from django.urls import path, include
 import debug_toolbar
 
 from pages.views import home_view, contact_view, about_view
-from products.views import product_detail_view, product_create_view
+from products.views import (
+    product_detail_view, 
+    product_create_view,
+    dynamic_lookup_view
+    )
 
 
 urlpatterns = [
@@ -31,6 +35,7 @@ urlpatterns = [
     #products urls
     path('product/', product_detail_view, name='product'),
     path('create/', product_create_view, name='create'),
+    path('products/<int:my_id>/', dynamic_lookup_view, name='products'),
 
     path('playground/', include('playground.urls')), 
     path('__debug__/', include(debug_toolbar.urls)) #add this line to the urls.py file to include the debug toolbar urls
