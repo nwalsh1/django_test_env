@@ -17,16 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import debug_toolbar
-
 from pages.views import home_view, contact_view, about_view
-from products.views import (
-    product_detail_view, 
-    product_create_view,
-    dynamic_lookup_view,
-    product_delete_view,
-    product_list_view
-    )
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,13 +25,8 @@ urlpatterns = [
     #pages urls
     path('about/', about_view, name='about'),
     path('contact/', contact_view, name='contact'),
-    #products urls
-    path('product/', product_detail_view, name='product'),
-    path('create/', product_create_view, name='create'),
-    path('products/<int:my_id>/', dynamic_lookup_view, name='products'),
-    path('products/<int:my_id>/delete', product_delete_view, name='product-delete'),
-    path('products/', product_list_view, name='product-list'), #list all products
-
+    path('products/', include('products.urls')), 
+    path('blog/',include('blog.urls')),
     path('playground/', include('playground.urls')), 
     path('__debug__/', include(debug_toolbar.urls)) #add this line to the urls.py file to include the debug toolbar urls
     #send all urls that start with playground to the urls.py file in the playground app

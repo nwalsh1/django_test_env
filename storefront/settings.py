@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'playground',
     'pages',
     'products',
+    'blog',
     #third party
     'debug_toolbar'
 ]
