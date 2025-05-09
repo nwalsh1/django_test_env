@@ -4,7 +4,7 @@
 
 {% if object_list%}
     {% for instance in object_list %}
-        <p>{{ instance.id }} - {{ instance.title }}</a></p>
+        <p>{{ instance.id }} -<a href='{{ instance.get_absolute_url}}'> {{ instance.title }}</a></p>
     {% endfor %}
 {% else %}
     <h1>Empty</h1>
