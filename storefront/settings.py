@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-58$083a+x5mik36t1!hiyuxibeen=l+)5)(3a&=+safvpl)25^
 DEBUG = True
 #when live turn this to false
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'django-test-env.onrender.com',
+    'localhost',
+    '127.0.0.1'
+]
 
 
 # Application definition
