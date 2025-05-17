@@ -1,13 +1,21 @@
 <!doctype html>
 <html>    
 <head>
-    <title> Some Example Title</title>
+    <title> Neil Walsh - First Django Project</title>
 </head>
 <body>
     {% comment %} {% include 'navbar.html' %} {% endcomment %}
-
+    <h1>Neil Walsh - First Django Project</h1>   
+    <li> <a href="{% url 'home' %}">Home</a></li>
+    <li> <a href="{% url 'admin:index' %}">Admin</a></li>
+    <li> <a href="{% url 'about' %}">About</a></li>
+    <li> <a href="{% url 'contact' %}">Contact</a></li>
+    <li> <a href="{% url 'products:product-list' %}">Products</a></li>
+    <li> <a href="{% url 'articles:article-list' %}">Blog</a></li>
+    <li> <a href="{% url 'playground:hello' %}">Playground</a></li>
+    
     {% block content %}
     replace me
     {% endblock %}
-    </body>
+</body>
 </html>
