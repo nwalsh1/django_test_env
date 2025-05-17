@@ -1,7 +1,8 @@
 {%extends 'base.html'%}
 {% block content %} 
-<h1>List:</h1>
-
+<h1>List View Class:</h1>
+<h2> This was to test class based views</h2>
+<p>ListView, DetailView, CreateView, UpdateView, DeleteView from Django.views.generic</p>
 {% if object_list%}
     {% for instance in object_list %}
         <p>{{ instance.id }} -<a href='{{ instance.get_absolute_url}}'> {{ instance.title }}</a></p>
@@ -9,5 +10,7 @@
 {% else %}
     <h1>Empty</h1>
 {% endif %}
+<p><a href = "{% url 'articles:article-create' %}">Create</a></p>
+
 
 {% endblock %}
